@@ -1,7 +1,9 @@
 import statistics
 from matplotlib import pyplot
-import sys
 from tkinter import *
+import csv
+import sys
+import pandas as pd
 
 
 def graph(x, y):
@@ -1190,30 +1192,10 @@ def questionare():
     y = statistics.mean(y_list)
     print()
     print(x)
-    print
-
+    print(y)
     graph(x,y)
     pr_inter()
     interactive()
-
-
-class Username():  # Clase con información del usuario
-    def _init_(self, name, password, yaxis, xaxis):
-        self.name = name
-        self.password = password
-        self.yaxis = yaxis
-        self.xaxis = xaxis
-
-    def access_code(self):  # Código de acceso para iniciar sesión (creado de esta forma para que no haya iguales)
-        return (self.name[:3] + self.password)
-
-    def change(self):
-        return self.xaxis, self.xaxis
-
-    def change2(self,nxaxis, nyaxis):
-        self.xaxis=nxaxis
-        self.yaxis=nyaxis
-        return nxaxis, nyaxis
 
 
 def next_test1():
@@ -1228,51 +1210,24 @@ def next_test3():
     print("(NEW TEST -- NOT CREATED)")
 
 
-def login_user(user_object):  # login function
-    print("LOG IN:")
-    askusername = input("Enter username: ")
-    askpassword = input("Enter password: ")
+def new_results():
+    print("Enter your results")
+    nxaxis = float(input("Enter x axis: "))
+    nyaxis = float(input("Enter y axis: "))
 
-    askaccescode = askusername[:3] + askpassword
+    # meter en el dataframe
+    # df = pd.read_csv('results.csv')
+    # print(df.loc["accesscode"==access_code, "xaxis"])
+    # print(df.loc["accesscode"==access_code, "yaxis"])
 
-    if askaccescode == user_object.access_code():
-        print("Now you can do the next test!")
-        next_quiz1(user_object)
-
-    else:
-        print("Invalid username or password")
-        sys.exit()
+    graph(nxaxis, nyaxis)
+    pr_inter()
+    interactive()
 
 
-def next_quiz1(user_object):
+def next_quiz(access_code):
     ask = input("To perform the next quiz, press a key, EXCEPT <<enter to quit>> ")
 
-    while ask != "":
-        print("Select the text you want to complete:")
-        available_tests = ["21/11/2022", "28/11/2022", "05/12/2022"] # se irán añadiendo de forma semanal a medida que se vayan creando
-        print(available_tests)
-        response = input("Enter one of the options above: ")
-        if response == available_tests[0]:
-            next_test1()
-        if response == available_tests[1]:
-            next_test2()
-        if response == available_tests[2]:
-            next_test3()
-
-        print("Please enter the values of your response")
-        nxaxis = float(input("Enter x axis: "))
-        nyaxis = float(input("Enter y axis: "))
-        print(user_object.change2(nxaxis, nyaxis))
-        graph(nxaxis, nyaxis)
-        pr_inter()
-        interactive()
-
-        ask = input("To perform the next quiz, press a key, EXCEPT <<enter to quit>> ")
-
-
-def next_quiz2():
-
-    ask = input("To perform the next quiz, press a key, EXCEPT <<enter to quit>> ")
     while ask != "":
         print("Select the text you want to complete:")
         available_tests = ["21/11/2022", "28/11/2022", "05/12/2022"]  # se irán añadiendo de forma semanal a medida que se vayan creando
@@ -1280,45 +1235,80 @@ def next_quiz2():
         response = input("Enter one of the options above: ")
         if response == available_tests[0]:
             next_test1()
+            new_results()
+            ask = input("To perform the next quiz, press a key, EXCEPT <<enter to quit>> ")
         if response == available_tests[1]:
             next_test2()
+            new_results()
+            ask = input("To perform the next quiz, press a key, EXCEPT <<enter to quit>> ")
         if response == available_tests[2]:
             next_test3()
-
-        print("Please enter the values of your response")
-        nxaxis = float(input("Enter x axis: "))
-        nyaxis = float(input("Enter y axis: "))
-        graph(nxaxis, nyaxis)
-        pr_inter()
-        interactive()
-
-        ask = input("To perform the next quiz, press a key, EXCEPT <<enter to quit>> ")
+            new_results()
+            ask = input("To perform the next quiz, press a key, EXCEPT <<enter to quit>> ")
+        else:
+            break
 
 
+def dataframe(x, y, user, password):
+    with open("results.csv", mode="a", newline="") as f:
+        results_writer = csv.writer(f, delimiter=",")
+        access_code = user[:3] + password
+        results_writer.writerow([access_code, x, y])
 
-def create_user():  # create the username
-    user = str(input("Create a username: "))
-    password = str(input("Create a password: "))
-    print("Please enter the values of your response")  # puedo tambien nombrar funcion con resultado en vez de preguntar
-    xaxis = float(input("Enter x axis: "))
-    yaxis = float(input("Enter y axis: "))
-    user_object = Username(user, password, xaxis, yaxis)
-    login_user(user_object)
+
+def account():
+    with open("users.csv", mode="a", newline="") as f:
+
+        users_writer = csv.writer(f, delimiter=",")
+        user = input("Enter username: ")
+        password = input("Enter password: ")
+        password2 = input("Please, confirm password: ")
+
+        if password == password2:
+            users_writer.writerow([user, password])
+            print("Registration is successful")
+            print("Enter your results")
+            x = eval(input("Enter x axis: "))
+            y = eval(input("Enter y axis: "))
+            dataframe(x, y, user, password)
+
+        else:
+            print("Please try again")
+            sys.exit()
+
+
+def login():
+    user = input("Enter username: ")
+    password = input("Enter password: ")
+    with open("users.csv", mode="r") as f:
+        users_reader = csv.reader(f, delimiter=",")
+        for row in users_reader:
+            if row == [user, password]:
+                access_code = str(user[:3] + password)
+                print("You are logged in ")
+                next_quiz(access_code)
+
+                return True
+    print("Please try again")
+    return False
 
 
 def main():
     print("WELCOME TO BUILD YOU MIND!")
-    print("Descripción del producto")
-    decision = eval(input("Select an option <<start initial test (1) or weekly test (2)>>"))
+    print("Build your Mind consists of an app that helps people discover their political positioning in terms of the current Spanish political parties.")
+    decision = eval(input("Select an option <<register (1) or login (2)>> "))
     if decision == 1:
         questionare()
-        create_user()
+        print("Now create an account")
+        account()
+        print("Your data has successfully been saved! Now login to your account. ")
+        login()
 
     if decision == 2:
-        next_quiz2()
+        login()
 
     else:
         print("END")
 
 
-main(
+main()
