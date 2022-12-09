@@ -67,7 +67,7 @@ Additionally, if the initial choice was a weekly test:If the choice is to start 
 
 # SOME EXTRA INFORMATION ABOUT THE CODE
 In order to carry out our objective, we have used different tools:
-1. Object Oriented Programming: the class username and the username, password and results are the results of the syrvey's vector
+1. CSV: We will tell the user that as a database we will use CSV which will store all his data.
  2. GUI and matplot to create the graphs
 
 
