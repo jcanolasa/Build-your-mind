@@ -41,7 +41,9 @@ The user will now have to enter their choice. If the choice is to start the init
      - **An example**: Economic globalization is inevitable, and for me it is ok that it serves primarily the interest of trans-national corporations rather than humanity or Controlling inflation is more important than controlling unemployment.
     - **User Input**: The answer will be chosen from a range 1-5 from Completely Disagree to Completely Agree.  
     - **Output**: Here the affirmations are authoritarian, meaning, “Strongly disagree” goes towards Right and “Strongly agree” goes towards Left. All of this is going to move the position in the graph
-  
+  <img width="1226" alt="Captura de pantalla 2022-12-10 a las 0 00 39" src="https://user-images.githubusercontent.com/118735060/206809543-614e2d09-940e-4467-be4c-8b00293017dd.png">
+
+<img width="1212" alt="Captura de pantalla 2022-12-10 a las 0 02 59" src="https://user-images.githubusercontent.com/118735060/206809554-255c2470-f928-4c03-8673-ad0d5e9f5679.png">
 
 
 
