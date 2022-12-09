@@ -25,7 +25,7 @@ To be able to run our program, make sure you have the following things installed
 
 # USAGE
 Once the user enters our platform, they will be welcomed to Build your mind and they will be given a brief explanation about our app.
-After this, the user will be asked whether to start the initial test or weekly test:    
+After this, the user will be asked whether he/she wants to register or login. If you click to register, the questionaire will appear, once completed; you create your username to then login. It is after this that you can do the weekly test. If you directly click on login, you will only do the weekly test. 
  
 The user will now have to enter their choice. If the choice is to start the initial test; their choice will be  validated and the user will be asked 60 different questions:
 
