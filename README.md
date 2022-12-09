@@ -10,6 +10,7 @@ Furthermore, it will inform of news, conferences, meetings of interest through n
 To be able to run our program, make sure you have the following things installed:
 
   - Python programming language - It will work in all versions between 3.6 and 3.8. 
+  - Pycharm console 2022.2.1 version - It will work both of Mac and Windows versions
   - Libraries - In order to run our program, we make use of the following 3 libraries: matplotlib, tk and statistics  
         To download the library make the following steps:
         1. Once in Pycharm, go to preferences
