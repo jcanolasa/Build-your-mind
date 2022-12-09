@@ -4,7 +4,8 @@ Our app “Build your Mind” consists of an app that helps people to know their
 This app has a main function:
   - It is a survey with a wide range of questions that would position you in a map showing you the political party that corresponds more to your principles based on your opinions and those of the spanish politicians. 
 
-Furthermore, it will inform of news, conferences, meetings of interest through notifications in order to be up to date, and provide a feedback question regarding the event, the user may respond to update their map. 
+Furthermore, it will provide you weekly tests. This will update your opinion and make it as efficient as possible while having your position in the graph
+
 
 # INSTALLATION
 To be able to run our program, make sure you have the following things installed:
