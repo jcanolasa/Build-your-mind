@@ -27,8 +27,9 @@ To be able to run our program, make sure you have the following things installed
 Once the user enters our platform, they will be welcomed to Build your mind and they will be given a brief explanation about our app.
 After this, the user will be asked whether he/she wants to register or login. If you click to register, the questionaire will appear, once completed; you create your username to then login. It is after this that you can do the weekly test. If you directly click on login, you will only do the weekly test. 
  
-The user will now have to enter their choice. If the choice is to start the initial test; their choice will be  validated and the user will be asked 60 different questions:
-<img width="1226" alt="Captura de pantalla 2022-12-10 a las 0 00 39" src="https://user-images.githubusercontent.com/118735060/206809543-614e2d09-940e-4467-be4c-8b00293017dd.png">
+The user will now have to enter their choice. If the choice is to start the initial test; their choice will be  validated and the user will be asked 60 different questions:<img width="1162" alt="Captura de pantalla 2022-12-10 a las 10 53 32" src="https://user-images.githubusercontent.com/118735060/206847690-0b386b06-07f8-45f7-b701-763822a38c59.png">
+
+
 
 <img width="1212" alt="Captura de pantalla 2022-12-10 a las 0 02 59" src="https://user-images.githubusercontent.com/118735060/206809554-255c2470-f928-4c03-8673-ad0d5e9f5679.png">
 
